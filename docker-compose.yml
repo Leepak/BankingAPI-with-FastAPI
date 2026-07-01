@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: banking-postgres
+
+    environment:
+      POSTGRES_USER: banking_user
+      POSTGRES_PASSWORD: banking_pass
+      POSTGRES_DB: banking_db
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - bankingapi-with-fastapi_postgres_data:/var/lib/postgresql/data
+
+    restart: unless-stopped
+
+volumes:
+  bankingapi-with-fastapi_postgres_data:
